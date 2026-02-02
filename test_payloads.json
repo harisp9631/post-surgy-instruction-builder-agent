@@ -1,0 +1,80 @@
+[
+  {
+    "description": "instruction_generation - knee replacement, 6 days post-op",
+    "payload": {
+      "type": "instruction_generation",
+      "context": {
+        "procedure_id": 1,
+        "procedure_type": "knee replacement",
+        "procedure_status": "completed",
+        "perform_at": "2026-01-20T10:00:00Z",
+        "days_post_op": 6,
+        "patient_id": 10,
+        "patient_name": "Jane Doe",
+        "doctor_name": "Dr. Smith",
+        "procedure_history": [
+          {"id": 2, "type": "physical therapy", "perform_at": "2025-06-01T09:00:00Z", "status": "completed"}
+        ]
+      }
+    }
+  },
+  {
+    "description": "instruction_generation - cardiac catheterization, 3 days post-op",
+    "payload": {
+      "type": "instruction_generation",
+      "context": {
+        "procedure_id": 2,
+        "procedure_type": "cardiac catheterization",
+        "procedure_status": "completed",
+        "perform_at": "2026-01-23T14:00:00Z",
+        "days_post_op": 3,
+        "patient_id": 11,
+        "patient_name": "John Smith",
+        "doctor_name": "Dr. Johnson"
+      }
+    }
+  },
+  {
+    "description": "instruction_adjustment - add stairs restriction",
+    "payload": {
+      "type": "instruction_adjustment",
+      "message": "Add a note about avoiding stairs for 2 weeks",
+      "current_instructions": "Rest as needed. Keep the wound clean and dry. Take pain medication as prescribed. Call your doctor if you have fever or increased redness.",
+      "context": {
+        "procedure_type": "knee replacement",
+        "days_post_op": 6,
+        "patient_name": "Jane Doe",
+        "doctor_name": "Dr. Smith"
+      }
+    }
+  },
+  {
+    "description": "instruction_adjustment - clarify medication timing",
+    "payload": {
+      "type": "instruction_adjustment",
+      "message": "Clarify that pain medication should be taken with food",
+      "current_instructions": "Take pain medication as prescribed. Rest and elevate your leg.",
+      "context": {
+        "procedure_type": "knee replacement",
+        "days_post_op": 2
+      }
+    }
+  },
+  {
+    "description": "edge case - missing type",
+    "payload": {
+      "context": {
+        "procedure_type": "abdominal surgery",
+        "days_post_op": 1
+      }
+    }
+  },
+  {
+    "description": "edge case - instruction_adjustment with missing message",
+    "payload": {
+      "type": "instruction_adjustment",
+      "current_instructions": "Some existing instructions.",
+      "context": {}
+    }
+  }
+]
